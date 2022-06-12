@@ -1,7 +1,7 @@
 -- REGISTER MATERIALS AND PROPERTIES FOR NONCUBIC ELEMENTS:
 -----------------------------------------------------------
 
-local S = minetest.get_translator(minetest.get_current_modname())
+local S = minetest.get_translator("technic_cnc")
 
 -- DIRT
 -------
