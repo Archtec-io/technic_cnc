@@ -7,7 +7,7 @@
 --   I could imagine some form of API allowing modders to come with their own node
 --   box definitions and easily stuff it in the this machine for production.
 
-local S = technic_cnc.getter
+local S = minetest.get_translator("technic_cnc")
 
 local allow_metadata_inventory_put
 local allow_metadata_inventory_take
@@ -15,61 +15,45 @@ local allow_metadata_inventory_move
 local can_dig
 local desc_tr = S("CNC Machine")
 
-if technic_cnc.use_technic then
-	minetest.register_craft({
-		output = 'technic:cnc',
-		recipe = {
-			{'default:glass',              'technic:diamond_drill_head', 'default:glass'},
-			{'technic:control_logic_unit', 'technic:machine_casing',     'basic_materials:motor'},
-			{'technic:carbon_steel_ingot', 'technic:lv_cable',           'technic:carbon_steel_ingot'},
-		},
-	})
 
-	allow_metadata_inventory_put = technic.machine_inventory_put
-	allow_metadata_inventory_take = technic.machine_inventory_take
-	allow_metadata_inventory_move = technic.machine_inventory_move
-	can_dig = technic.machine_can_dig
-	desc_tr = S("%s CNC Machine"):format("LV")
-else
-	minetest.register_craft({
-		output = 'technic:cnc',
-		recipe = {
-			{'default:glass',       'default:diamond',    'default:glass'},
-			{'basic_materials:ic',  'default:steelblock', 'basic_materials:motor'},
-			{'default:steel_ingot', 'default:mese',       'default:steel_ingot'},
-		},
-	})
+minetest.register_craft({
+	output = 'technic:cnc',
+	recipe = {
+		{'default:glass',       'default:diamond',    'default:glass'},
+		{'basic_materials:ic',  'default:steelblock', 'basic_materials:motor'},
+		{'default:steel_ingot', 'default:mese',       'default:steel_ingot'},
+	},
+})
 
-	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		if minetest.is_protected(pos, player:get_player_name()) then
-			return 0
-		end
-		return stack:get_count()
+allow_metadata_inventory_put = function(pos, listname, index, stack, player)
+	if minetest.is_protected(pos, player:get_player_name()) then
+		return 0
 	end
+	return stack:get_count()
+end
 
-	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-		if minetest.is_protected(pos, player:get_player_name()) then
-			return 0
-		end
-		return stack:get_count()
+allow_metadata_inventory_take = function(pos, listname, index, stack, player)
+	if minetest.is_protected(pos, player:get_player_name()) then
+		return 0
 	end
+	return stack:get_count()
+end
 
-	allow_metadata_inventory_move = function(pos, from_list, from_index,
-	                                to_list, to_index, count, player)
-		if minetest.is_protected(pos, player:get_player_name()) then
-			return 0
-		end
-		return count
+allow_metadata_inventory_move = function(pos, from_list, from_index,
+		                                to_list, to_index, count, player)
+	if minetest.is_protected(pos, player:get_player_name()) then
+		return 0
 	end
+	return count
+end
 
-	can_dig = function(pos, player)
-		if player and minetest.is_protected(pos, player:get_player_name()) then return false end
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("dst")
-			and inv:is_empty("src")
-			and default.can_interact_with_node(player, pos)
-	end
+can_dig = function(pos, player)
+	if player and minetest.is_protected(pos, player:get_player_name()) then return false end
+	local meta = minetest.get_meta(pos);
+	local inv = meta:get_inventory()
+	return inv:is_empty("dst")
+		and inv:is_empty("src")
+		and default.can_interact_with_node(player, pos)
 end
 
 local onesize_products = {
@@ -207,45 +191,6 @@ local function form_handler(pos, formname, fields, sender)
 	end
 end
 
--- Action code performing the transformation
-local run = function(pos, node)
-	local meta         = minetest.get_meta(pos)
-	local inv          = meta:get_inventory()
-	local eu_input     = meta:get_int("LV_EU_input")
-	local machine_name = desc_tr
-	local machine_node = "technic:cnc"
-	local demand       = 450
-
-	local result = meta:get_string("cnc_product")
-	if inv:is_empty("src") or
-	   (not minetest.registered_nodes[result]) or
-	   (not inv:room_for_item("dst", result)) then
-		technic.swap_node(pos, machine_node)
-		meta:set_string("infotext", S("%s Idle"):format(machine_name))
-		meta:set_string("cnc_product", "")
-		meta:set_int("LV_EU_demand", 0)
-		return
-	end
-
-	if eu_input < demand then
-		technic.swap_node(pos, machine_node)
-		meta:set_string("infotext", S("%s Unpowered"):format(machine_name))
-	elseif eu_input >= demand then
-		technic.swap_node(pos, machine_node.."_active")
-		meta:set_string("infotext", S("%s Active"):format(machine_name))
-		meta:set_int("src_time", meta:get_int("src_time") + 1)
-		if meta:get_int("src_time") >= 3 then -- 3 ticks per output
-			meta:set_int("src_time", 0)
-			local srcstack = inv:get_stack("src", 1)
-			srcstack:take_item()
-			inv:set_stack("src", 1, srcstack)
-			inv:add_item("dst", result.." "..meta:get_int("cnc_multiplier"))
-		end
-	end
-	meta:set_int("LV_EU_demand", demand)
-end
-
--- The actual block inactive state
 minetest.register_node(":technic:cnc", {
 	description = desc_tr,
 	tiles       = {"technic_cnc_top.png", "technic_cnc_bottom.png", "technic_cnc_side.png",
@@ -271,29 +216,4 @@ minetest.register_node(":technic:cnc", {
 	technic_run = technic_cnc.use_technic and run,
 })
 
--- Active state block
-if technic_cnc.use_technic then
-
-	minetest.register_node(":technic:cnc_active", {
-		description = desc_tr,
-		tiles       = {"technic_cnc_top_active.png", "technic_cnc_bottom.png", "technic_cnc_side.png",
-					   "technic_cnc_side.png",       "technic_cnc_side.png",   "technic_cnc_front_active.png"},
-		groups = {cracky=2, technic_machine=1, technic_lv=1, not_in_creative_inventory=1},
-		connect_sides = {"bottom", "back", "left", "right"},
-		paramtype2 = "facedir",
-		drop = "technic:cnc",
-		legacy_facedir_simple = true,
-		can_dig = can_dig,
-		allow_metadata_inventory_put = allow_metadata_inventory_put,
-		allow_metadata_inventory_take = allow_metadata_inventory_take,
-		allow_metadata_inventory_move = allow_metadata_inventory_move,
-		on_receive_fields = form_handler,
-		technic_run = run,
-		technic_disabled_machine_name = "technic:cnc",
-	})
-
-	technic.register_machine("LV", "technic:cnc",        technic.receiver)
-	technic.register_machine("LV", "technic:cnc_active", technic.receiver)
-else
-	minetest.register_alias("technic:cnc_active", "technic:cnc")
-end
+minetest.register_alias("technic:cnc_active", "technic:cnc")

@@ -1,7 +1,7 @@
 -- API for the technic CNC machine
 -- Again code is adapted from the NonCubic Blocks MOD v1.4 by yves_de_beck
 
-local S = technic_cnc.getter
+local S = minetest.get_translator("technic_cnc")
 
 -- REGISTER NONCUBIC FORMS, CREATE MODELS AND RECIPES:
 ------------------------------------------------------
