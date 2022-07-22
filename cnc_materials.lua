@@ -148,16 +148,6 @@ technic_cnc.register_all("default:silver_sandstone_block",
                 {"default_silver_sandstone_block.png"},
                 S("Silver Sandstone Block"))
 
-
-
-
--- LEAVES
----------
-technic_cnc.register_all("default:leaves",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=3, not_in_creative_inventory=1},
-                {"default_leaves.png"},
-                S("Leaves"))
-
 -- TREE
 -------
 technic_cnc.register_all("default:tree",
@@ -231,63 +221,6 @@ technic_cnc.register_all("default:goldblock",
                 {cracky=1, level=2, not_in_creative_inventory=1},
                 {"default_gold_block.png"},
                 S("Gold"))
-
-
-
-
-if minetest.get_modpath("ethereal") then
-	-- Glostone
-	------------
-	technic_cnc.register_all("ethereal:glostone",
-			{cracky=1, not_in_creative_inventory=1, light_source=13},
-			{"glostone.png"},
-			S("Glo Stone"))
-
-	-- Crystal block
-	----------------
-	technic_cnc.register_all("ethereal:crystal_block",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"crystal_block.png"},
-                S("Crystal"))
-
-	-- Misc. Wood types
-	-------------------
-	technic_cnc.register_all("ethereal:banana_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"banana_wood.png"},
-                S("Banana Wood"))
-
-	technic_cnc.register_all("ethereal:birch_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"moretrees_birch_wood.png"},
-                S("Birch Wood"))
-
-	technic_cnc.register_all("ethereal:frost_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"frost_wood.png"},
-                S("Frost Wood"))
-
-	technic_cnc.register_all("ethereal:palm_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"moretrees_palm_wood.png"},
-                S("Palm Wood"))
-
-	technic_cnc.register_all("ethereal:willow_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"willow_wood.png"},
-                S("Willow Wood"))
-
-	technic_cnc.register_all("ethereal:yellow_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"yellow_wood.png"},
-                S("Healing Tree Wood"))
-
-	technic_cnc.register_all("ethereal:redwood_wood",
-                {snappy=2, choppy=2, oddly_breakable_by_hand=2, not_in_creative_inventory=1},
-                {"redwood_wood.png"},
-                S("Redwood"))
-end
-
 
 if minetest.get_modpath("moreblocks") then
 	-- Tiles
