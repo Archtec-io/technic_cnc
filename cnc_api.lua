@@ -98,11 +98,6 @@ technic_cnc.programs = {
 		desc  = S("Sphere")
 	},
 
-	{ suffix  = "technic_cnc_cylinder_horizontal",
-		model = "technic_cnc_cylinder_horizontal.obj",
-		desc  = S("Horizontal Cylinder")
-	},
-
 	{ suffix  = "technic_cnc_cylinder",
 		model = "technic_cnc_cylinder.obj",
 		desc  = S("Cylinder")
@@ -142,118 +137,6 @@ technic_cnc.programs = {
 				{ -4/16, -4/16, -4/16, 4/16, -2/16, 4/16 },
 				{ -6/16, -6/16, -6/16, 6/16, -4/16, 6/16 },
 				{ -8/16, -8/16, -8/16, 8/16, -6/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_inner_edge_upsdown",
-		model = "technic_cnc_innercorner_upsdown.obj",
-		desc  = S("Slope Upside Down Inner Edge/Corner"),
-		sbox  = {
-			type = "fixed",
-			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-		},
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{  0.25, -0.25, -0.5,  0.5, -0.5,   0.5  },
-				{ -0.5,  -0.25,  0.25, 0.5, -0.5,   0.5  },
-				{  0,     0,    -0.5,  0.5, -0.25,  0.5  },
-				{ -0.5,   0,     0,    0.5, -0.25,  0.5  },
-				{ -0.25,  0.25, -0.5,  0.5,  0,    -0.25 },
-				{ -0.5,   0.25, -0.25, 0.5,  0,     0.5  },
-				{ -0.5,   0.5,  -0.5,  0.5,  0.25,  0.5  }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_edge_upsdown",
-		model = "technic_cnc_outercorner_upsdown.obj",
-		desc  = S("Slope Upside Down Outer Edge/Corner"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -8/16,  8/16, -8/16, 8/16,  4/16, 8/16 },
-				{ -4/16,  4/16, -4/16, 8/16,     0, 8/16 },
-				{     0,     0,     0, 8/16, -4/16, 8/16 },
-				{  4/16, -4/16,  4/16, 8/16, -8/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_inner_edge",
-		model = "technic_cnc_innercorner.obj",
-		desc  = S("Slope Inner Edge/Corner"),
-		sbox  = {
-			type = "fixed",
-			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-		},
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -0.5,  -0.5,  -0.5,  0.5, -0.25,  0.5  },
-				{ -0.5,  -0.25, -0.25, 0.5,  0,     0.5  },
-				{ -0.25, -0.25, -0.5,  0.5,  0,    -0.25 },
-				{ -0.5,   0,     0,    0.5,  0.25,  0.5  },
-				{  0,     0,    -0.5,  0.5,  0.25,  0.5  },
-				{ -0.5,   0.25,  0.25, 0.5,  0.5,   0.5  },
-				{  0.25,  0.25, -0.5,  0.5,  0.5,   0.5  }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_edge",
-		model = "technic_cnc_outercorner.obj",
-		desc  = S("Slope Outer Edge/Corner"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{  4/16,  4/16,  4/16, 8/16,  8/16, 8/16 },
-				{     0,     0,     0, 8/16,  4/16, 8/16 },
-				{ -4/16, -4/16, -4/16, 8/16,     0, 8/16 },
-				{ -8/16, -8/16, -8/16, 8/16, -4/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_upsdown",
-		model = "technic_cnc_slope_upsdown.obj",
-		desc  = S("Slope Upside Down"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -8/16,  8/16, -8/16, 8/16,  4/16, 8/16 },
-				{ -8/16,  4/16, -4/16, 8/16,     0, 8/16 },
-				{ -8/16,     0,     0, 8/16, -4/16, 8/16 },
-				{ -8/16, -4/16,  4/16, 8/16, -8/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_lying",
-		model = "technic_cnc_slope_horizontal.obj",
-		desc  = S("Slope Lying"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{  4/16, -8/16,  4/16,  8/16, 8/16, 8/16 },
-				{     0, -8/16,     0,  4/16, 8/16, 8/16 },
-				{ -4/16, -8/16, -4/16,     0, 8/16, 8/16 },
-				{ -8/16, -8/16, -8/16, -4/16, 8/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope",
-		model = "technic_cnc_slope.obj",
-		desc  = S("Slope"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -8/16,  4/16,  4/16, 8/16,  8/16, 8/16 },
-				{ -8/16,     0,     0, 8/16,  4/16, 8/16 },
-				{ -8/16, -4/16, -4/16, 8/16,     0, 8/16 },
-				{ -8/16, -8/16, -8/16, 8/16, -4/16, 8/16 }
 			}
 		}
 	},
@@ -335,19 +218,11 @@ function technic_cnc.register_slope_edge_etc(recipeitem, groups, images, desc_sl
 				desc_cylinder, desc_cylinder_horizontal, desc_spheroid, desc_element_straight, desc_element_edge,
 				desc_element_t, desc_element_cross, desc_element_end)
 
-         technic_cnc.register_slope(recipeitem, groups, images, desc_slope)
-         technic_cnc.register_slope_lying(recipeitem, groups, images, desc_slope_lying)
-         technic_cnc.register_slope_upsdown(recipeitem, groups, images, desc_slope_upsdown)
-         technic_cnc.register_slope_edge(recipeitem, groups, images, desc_slope_edge)
-         technic_cnc.register_slope_inner_edge(recipeitem, groups, images, desc_slope_inner_edge)
-         technic_cnc.register_slope_edge_upsdown(recipeitem, groups, images, desc_slope_upsdwn_edge)
-         technic_cnc.register_slope_inner_edge_upsdown(recipeitem, groups, images, desc_slope_upsdwn_inner_edge)
          technic_cnc.register_pyramid(recipeitem, groups, images, desc_pyramid)
          technic_cnc.register_spike(recipeitem, groups, images, desc_spike)
          technic_cnc.register_onecurvededge(recipeitem, groups, images, desc_onecurvededge)
          technic_cnc.register_twocurvededge(recipeitem, groups, images, desc_twocurvededge)
          technic_cnc.register_cylinder(recipeitem, groups, images, desc_cylinder)
-         technic_cnc.register_cylinder_horizontal(recipeitem, groups, images, desc_cylinder_horizontal)
          technic_cnc.register_spheroid(recipeitem, groups, images, desc_spheroid)
          technic_cnc.register_element_straight(recipeitem, groups, images, desc_element_straight)
          technic_cnc.register_element_edge(recipeitem, groups, images, desc_element_edge)
