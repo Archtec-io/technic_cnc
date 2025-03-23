@@ -92,11 +92,6 @@ technic_cnc.programs = {
 		desc  = S("Sphere")
 	},
 
-	{ suffix  = "technic_cnc_cylinder_horizontal",
-		model = "technic_cnc_cylinder_horizontal.obj",
-		desc  = S("Horizontal Cylinder")
-	},
-
 	{ suffix  = "technic_cnc_cylinder",
 		model = "technic_cnc_cylinder.obj",
 		desc  = S("Cylinder")
@@ -140,118 +135,6 @@ technic_cnc.programs = {
 		}
 	},
 
-	{ suffix  = "technic_cnc_slope_inner_edge_upsdown",
-		model = "technic_cnc_innercorner_upsdown.obj",
-		desc  = S("Slope Upside Down Inner Edge/Corner"),
-		sbox  = {
-			type = "fixed",
-			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-		},
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{  0.25, -0.25, -0.5,  0.5, -0.5,   0.5  },
-				{ -0.5,  -0.25,  0.25, 0.5, -0.5,   0.5  },
-				{  0,     0,    -0.5,  0.5, -0.25,  0.5  },
-				{ -0.5,   0,     0,    0.5, -0.25,  0.5  },
-				{ -0.25,  0.25, -0.5,  0.5,  0,    -0.25 },
-				{ -0.5,   0.25, -0.25, 0.5,  0,     0.5  },
-				{ -0.5,   0.5,  -0.5,  0.5,  0.25,  0.5  }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_edge_upsdown",
-		model = "technic_cnc_outercorner_upsdown.obj",
-		desc  = S("Slope Upside Down Outer Edge/Corner"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -8/16,  8/16, -8/16, 8/16,  4/16, 8/16 },
-				{ -4/16,  4/16, -4/16, 8/16,     0, 8/16 },
-				{     0,     0,     0, 8/16, -4/16, 8/16 },
-				{  4/16, -4/16,  4/16, 8/16, -8/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_inner_edge",
-		model = "technic_cnc_innercorner.obj",
-		desc  = S("Slope Inner Edge/Corner"),
-		sbox  = {
-			type = "fixed",
-			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-		},
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -0.5,  -0.5,  -0.5,  0.5, -0.25,  0.5  },
-				{ -0.5,  -0.25, -0.25, 0.5,  0,     0.5  },
-				{ -0.25, -0.25, -0.5,  0.5,  0,    -0.25 },
-				{ -0.5,   0,     0,    0.5,  0.25,  0.5  },
-				{  0,     0,    -0.5,  0.5,  0.25,  0.5  },
-				{ -0.5,   0.25,  0.25, 0.5,  0.5,   0.5  },
-				{  0.25,  0.25, -0.5,  0.5,  0.5,   0.5  }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_edge",
-		model = "technic_cnc_outercorner.obj",
-		desc  = S("Slope Outer Edge/Corner"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{  4/16,  4/16,  4/16, 8/16,  8/16, 8/16 },
-				{     0,     0,     0, 8/16,  4/16, 8/16 },
-				{ -4/16, -4/16, -4/16, 8/16,     0, 8/16 },
-				{ -8/16, -8/16, -8/16, 8/16, -4/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_upsdown",
-		model = "technic_cnc_slope_upsdown.obj",
-		desc  = S("Slope Upside Down"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -8/16,  8/16, -8/16, 8/16,  4/16, 8/16 },
-				{ -8/16,  4/16, -4/16, 8/16,     0, 8/16 },
-				{ -8/16,     0,     0, 8/16, -4/16, 8/16 },
-				{ -8/16, -4/16,  4/16, 8/16, -8/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope_lying",
-		model = "technic_cnc_slope_horizontal.obj",
-		desc  = S("Slope Lying"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{  4/16, -8/16,  4/16,  8/16, 8/16, 8/16 },
-				{     0, -8/16,     0,  4/16, 8/16, 8/16 },
-				{ -4/16, -8/16, -4/16,     0, 8/16, 8/16 },
-				{ -8/16, -8/16, -8/16, -4/16, 8/16, 8/16 }
-			}
-		}
-	},
-
-	{ suffix  = "technic_cnc_slope",
-		model = "technic_cnc_slope.obj",
-		desc  = S("Slope"),
-		cbox  = {
-			type = "fixed",
-			fixed = {
-				{ -8/16,  4/16,  4/16, 8/16,  8/16, 8/16 },
-				{ -8/16,     0,     0, 8/16,  4/16, 8/16 },
-				{ -8/16, -4/16, -4/16, 8/16,     0, 8/16 },
-				{ -8/16, -8/16, -8/16, 8/16, -4/16, 8/16 }
-			}
-		}
-	},
-
 }
 
 -- Allow disabling certain programs for some node. Default is allowing all types for all nodes
@@ -272,17 +155,9 @@ technic_cnc.programs_disable = {
 -- Also technic_cnc.programs could be parsed and product lists created based on programs.
 technic_cnc.onesize_products = {
 	cylinder                 = 2,
-	cylinder_horizontal      = 2,
 	oblate_spheroid          = 1,
 	onecurvededge            = 1,
 	pyramid                  = 2,
-	slope                    = 2,
-	slope_edge               = 1,
-	slope_edge_upsdown       = 1,
-	slope_inner_edge         = 1,
-	slope_inner_edge_upsdown = 1,
-	slope_lying              = 2,
-	slope_upsdown            = 2,
 	sphere                   = 1,
 	spike                    = 1,
 	stick                    = 8,
